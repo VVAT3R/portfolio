@@ -1,10 +1,21 @@
 # portfolio
 
-Terminal-inspired developer portfolio built with vanilla HTML/CSS/JS.
+i just created this for no reason so don't ask but feel free to check it.
 
 ## Live
 
 https://v4cachy.github.io/portfolio/
+
+## What's inside
+
+- terminal-inspired dark/light theme
+- typewriter effect that says hello
+- glitch hover effect because why not
+- skills, projects, experience, contributions
+- live github stats and contribution chart
+- keyboard shortcuts (P, E, H)
+- logout modal that doesn't actually log you out
+- scroll-to-top button that actually works
 
 ## Usage
 
@@ -12,8 +23,6 @@ https://v4cachy.github.io/portfolio/
 npx serve .
 ```
 
-Open `http://localhost:3000` in a browser.
-
 ## Deploy
 
-Push to `main` — GitHub Pages auto-deploys from the root directory.
+push to `main` and github pages does the rest.
