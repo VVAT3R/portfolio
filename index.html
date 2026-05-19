@@ -277,7 +277,7 @@ h2::after {
 <h1 id="logo">🐧 Ruknun Shadid Tawsif 🐧</h1>
 <nav>
 <a href="https://github.com/v4cachy" target="_blank">GitHub</a>
-<a href="https://v4cachy.github.io/Lenovo-Legion-5/" target="_blank">MY BUILD</a>
+<a href="#build">Builds</a>
 <a href="#" onclick="toggleTheme();return false" id="themeBtn">Light</a>
 <a href="#projects">Projects</a>
 <a href="https://mail.google.com/mail/?view=cm&fs=1&to=mrmysteriousx5@gmail.com" target="_blank">Email</a>
@@ -290,7 +290,7 @@ h2::after {
 <p class="prompt"><span id="typed"></span><span class="cursor">█</span></p>
 <h1 id="glitchTarget" data-text="I BUILD TOOLS FOR LEGION ON LINUX">I BUILD<br>TOOLS FOR<br>LEGION ON <span class="highlight">LINUX</span></h1>
 <p>Python, C. Building Linux tools for Lenovo Legion laptops — one idea at a time.</p>
-<p id="build" class="dim" style="margin-top:20px;font-size:0.8rem"><span class="dot-pulse">●</span> Currently building: <a href="https://github.com/v4cachy/legion-linux-toolkit" style="color:#8b949e;text-decoration:underline;text-underline-offset:3px">legion-linux-toolkit</a></p>
+<p id="building" class="dim" style="margin-top:20px;font-size:0.8rem"><span class="dot-pulse">●</span> Currently building: <a href="https://github.com/v4cachy/legion-linux-toolkit" style="color:#8b949e;text-decoration:underline;text-underline-offset:3px">legion-linux-toolkit</a></p>
 
 </div>
 </section>
@@ -330,6 +330,27 @@ h2::after {
 <div style="border:4px solid var(--border);padding:16px;background:var(--card);overflow-x:auto;transition:border-color .3s,background .3s">
 <img src="https://ghchart.rshah.org/v4cachy" alt="GitHub contribution graph" style="width:100%;display:block;min-width:600px">
 <div style="margin-top:8px;color:var(--dim);font-size:0.75rem;text-align:center">Total contributions: <span id="totalContrib">...</span></div>
+</div>
+</div>
+</section>
+
+<section id="build">
+<div class="container">
+<h2>Build</h2>
+<div class="projects-grid">
+<div class="project">
+<h3>Lenovo Legion 5 15ACH6H (82JU)</h3>
+<div class="desc">My daily driver — specs and config at a glance.</div>
+<div class="project-meta" style="margin-top:16px;flex-direction:column;gap:6px">
+<span><span class="dot" style="background:#fac800"></span>CPU: AMD Ryzen 7 5800H — 8C/16T · 4.4 GHz</span>
+<span><span class="dot" style="background:#76b900"></span>GPU: NVIDIA GeForce RTX 3060 Laptop — 130W · 6 GB GDDR6</span>
+<span><span class="dot" style="background:#8b5cf6"></span>RAM: 16 GB DDR4-3200 (2× SO-DIMM · max 32 GB)</span>
+<span><span class="dot" style="background:#00b4d8"></span>Display: 15.6" FHD 165Hz IPS · Dolby Vision · DC Dimmer</span>
+<span><span class="dot" style="background:#e34c26"></span>Storage: M.2 2280 NVMe PCIe 3.0×4</span>
+<span><span class="dot" style="background:#0078d4"></span>Battery: 80 Wh · 4-cell · 300W charger</span>
+<span><span class="dot" style="background:#f85149"></span>OS: CachyOS KDE Plasma 6 — linux-cachyos (BORE)</span>
+</div>
+</div>
 </div>
 </div>
 </section>
@@ -403,7 +424,7 @@ function toggleTheme() {
 // ---- keyboard shortcuts ----
 document.addEventListener('keydown', function(e) {
   if (e.target.tagName === 'INPUT') return;
-  const map = { p: 'projects', e: 'experience', h: 'build' };
+  const map = { p: 'projects', e: 'experience', h: 'building', b: 'build' };
   const id = map[e.key.toLowerCase()];
   if (id) document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
 });
