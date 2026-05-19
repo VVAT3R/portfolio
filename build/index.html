@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BUILD — v4cachy</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='14' fill='%23161b22'/><text x='50' y='68' font-family='monospace' font-size='56' font-weight='bold' fill='%233fb950' text-anchor='middle'>$</text></svg>">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24'><rect x='2' y='4' width='12' height='16' rx='2' fill='%233fb950'/><text x='8' y='17' font-family='monospace' font-size='12' fill='%23000' text-anchor='middle'>_</text></svg>") 6 12, auto; }
+a, button, [onclick] { cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24'><rect x='2' y='4' width='16' height='16' rx='2' fill='%23ffdd00'/><text x='10' y='17' font-family='monospace' font-size='12' fill='%23000' text-anchor='middle'>_</text></svg>") 8 12, pointer; }
+
+:root {
+  --bg: #0d1117;
+  --fg: #c9d1d9;
+  --card: #161b22;
+  --border: #c9d1d9;
+  --accent: #ffdd00;
+  --green: #3fb950;
+  --dim: #8b949e;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.container { max-width: 800px; margin: 0 auto; padding: 0 24px; }
+
+header {
+  margin: 16px;
+  padding: 16px 24px;
+  border: 4px solid var(--border);
+  background: var(--card);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header h1 {
+  font-size: 1rem;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+header nav a {
+  color: var(--fg);
+  text-transform: uppercase;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  transition: color .12s;
+}
+header nav a:hover { color: var(--accent); text-decoration: none; }
+
+.hero { padding: 80px 0 40px; }
+.hero .prompt { color: var(--green); font-size: 0.85rem; margin-bottom: 12px; }
+.hero .prompt::before { content: '$ '; color: var(--dim); }
+.hero h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+.hero .highlight { background: var(--accent); color: var(--bg); padding: 2px 10px; display: inline-block; }
+.hero p { color: var(--dim); margin-top: 12px; }
+
+h2 {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-weight: 800;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+h2::before { content: '## '; color: var(--dim); font-weight: 400; }
+h2::after {
+  content: '';
+  display: block;
+  height: 4px;
+  background: var(--border);
+  margin-top: 4px;
+  width: 100%;
+}
+
+section { padding: 40px 0; }
+
+.specs-grid { display: flex; flex-direction: column; gap: 8px; }
+.spec {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  border: 3px solid var(--border);
+  background: var(--card);
+  transition: .12s;
+}
+.spec:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 var(--border);
+}
+.spec .label {
+  font-size: 0.7rem;
+  color: var(--dim);
+  text-transform: uppercase;
+  min-width: 80px;
+  flex-shrink: 0;
+}
+.spec .value {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--fg);
+}
+.spec .dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.info-grid { display: flex; flex-direction: column; gap: 12px; }
+.info-item {
+  padding: 16px 20px;
+  border: 3px solid var(--border);
+  background: var(--card);
+  transition: .12s;
+}
+.info-item:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 var(--border);
+}
+.info-item h3 {
+  font-size: 0.85rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.info-item p {
+  font-size: 0.8rem;
+  color: var(--dim);
+  line-height: 1.5;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 32px;
+  padding: 10px 24px;
+  border: 3px solid var(--border);
+  color: var(--fg);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  transition: .12s;
+  font-family: 'JetBrains Mono', monospace;
+}
+.back-link:hover {
+  background: var(--accent);
+  color: #000;
+  border-color: var(--accent);
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 var(--border);
+  text-decoration: none;
+}
+
+.cursor { color: var(--green); animation: blink 0.8s step-end infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+
+@media (max-width: 600px) {
+  .hero h1 { font-size: 1.4rem; }
+  header { flex-direction: column; gap: 12px; text-align: center; }
+  header nav a { margin: 0 8px; }
+  .spec { flex-wrap: wrap; gap: 6px; }
+  .spec .label { min-width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<header>
+<h1>🐧 Ruknun Shadid Tawsif 🐧</h1>
+<nav>
+<a href="../">Home</a>
+<a href="https://github.com/v4cachy" target="_blank">GitHub</a>
+<a href="https://mail.google.com/mail/?view=cm&fs=1&to=mrmysteriousx5@gmail.com" target="_blank">Email</a>
+</nav>
+</header>
+
+<section class="hero">
+<div class="container">
+<p class="prompt"><span>cat /proc/build</span><span class="cursor">█</span></p>
+<h1>Lenovo Legion 5 <span class="highlight">15ACH6H</span></h1>
+<p>Model 82JU · BIOS GKCN58WW · Gen 6 (2021) · 15.6" chassis</p>
+</div>
+</section>
+
+<section>
+<div class="container">
+<h2>Specs</h2>
+<div class="specs-grid">
+<div class="spec">
+<span class="dot" style="background:#fac800"></span>
+<span class="label">CPU</span>
+<span class="value">AMD Ryzen 7 5800H — 8C/16T · 4.4 GHz · Zen 3 · 7nm</span>
+</div>
+<div class="spec">
+<span class="dot" style="background:#76b900"></span>
+<span class="label">GPU</span>
+<span class="value">NVIDIA GeForce RTX 3060 Laptop — 130W TGP · 6 GB GDDR6 · Ampere</span>
+</div>
+<div class="spec">
+<span class="dot" style="background:#8b5cf6"></span>
+<span class="label">iGPU</span>
+<span class="value">AMD Radeon Vega 8 — 8 CU · 512 shaders · GCN 5</span>
+</div>
+<div class="spec">
+<span class="dot" style="background:#58a6ff"></span>
+<span class="label">RAM</span>
+<span class="value">16 GB DDR4-3200 — 2× SO-DIMM · max 32 GB</span>
+</div>
+<div class="spec">
+<span class="dot" style="background:#00b4d8"></span>
+<span class="label">Display</span>
+<span class="value">15.6" FHD (1920×1080) · 165Hz IPS · Dolby Vision · DC Dimmer</span>
+</div>
+<div class="spec">
+<span class="dot" style="background:#e34c26"></span>
+<span class="label">Storage</span>
+<span class="value">M.2 2280 NVMe PCIe 3.0×4 — single slot</span>
+</div>
+<div class="spec">
+<span class="dot" style="background:#0078d4"></span>
+<span class="label">Wi-Fi</span>
+<span class="value">Intel AX200 — Wi-Fi 6 · BT 5.1 · iwlwifi</span>
+</div>
+<div class="spec">
+<span class="dot" style="background:#3fb950"></span>
+<span class="label">Battery</span>
+<span class="value">80 Wh · 4-cell Li-Ion · 300W barrel charger · USB-C PD</span>
+</div>
+<div class="spec">
+<span class="dot" style="background:#f85149"></span>
+<span class="label">OS</span>
+<span class="value">CachyOS KDE Plasma 6 — linux-cachyos (BORE · sched-ext) · x86-64-v3</span>
+</div>
+</div>
+</div>
+</section>
+
+<section>
+<div class="container">
+<h2>Config</h2>
+<div class="info-grid">
+<div class="info-item">
+<h3>GPU Mode</h3>
+<p>BIOS MUX switch (F2 → Configuration → Graphics Mode). Discrete for gaming (full 130W), Hybrid for battery life, iGPU-only for travel. HDMI 2.1 is hardwired to the RTX 3060.</p>
+</div>
+<div class="info-item">
+<h3>Fan Control</h3>
+<p>LenovoLegionLinux via AUR — 10-point fan curve GUI, 3 power modes (Quiet/Balanced/Performance), Fn+Q switching. Persists via systemd service.</p>
+</div>
+<div class="info-item">
+<h3>Power Management</h3>
+<p>amd-pstate EPP driver (active by default) + TLP. Battery conservation mode caps at 60–80% charge. KDE Power Profiles for quick mode switching.</p>
+</div>
+<div class="info-item">
+<h3>Gaming Stack</h3>
+<p>Steam + Proton-CachyOS (Anti-Lag 2 + FSR4 ML), MangoHud overlay, GameMode, Gamescope for HDR. RTX 3060 delivers ~5–20% lower FPS vs Windows depending on the title.</p>
+</div>
+<div class="info-item">
+<h3>Resizable BAR</h3>
+<p>Enabled in BIOS — Above 4G Decoding + Re-Size BAR Support. Gives 0–12% FPS gain in supported titles. Confirmed working on linux-cachyos.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section>
+<div class="container">
+<a href="../" class="back-link">← Back</a>
+</div>
+</section>
+
+</body>
+</html>
