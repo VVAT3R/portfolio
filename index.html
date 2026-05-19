@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PORTFOLIO</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='14' fill='%23161b22'/><text x='50' y='68' font-family='monospace' font-size='56' font-weight='bold' fill='%233fb950' text-anchor='middle'>$</text></svg>">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24'><rect x='2' y='4' width='12' height='16' rx='2' fill='%233fb950'/><text x='8' y='17' font-family='monospace' font-size='12' fill='%23000' text-anchor='middle'>_</text></svg>") 6 12, auto; }
+a, button, [onclick] { cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24'><rect x='2' y='4' width='16' height='16' rx='2' fill='%23ffdd00'/><text x='10' y='17' font-family='monospace' font-size='12' fill='%23000' text-anchor='middle'>_</text></svg>") 8 12, pointer; }
+
+:root {
+  --bg: #0d1117;
+  --fg: #c9d1d9;
+  --card: #161b22;
+  --border: #c9d1d9;
+  --accent: #ffdd00;
+  --green: #3fb950;
+  --dim: #8b949e;
+}
+.light {
+  --bg: #f5f5f5;
+  --fg: #1a1a1a;
+  --card: #ffffff;
+  --border: #1a1a1a;
+  --accent: #1a1a1a;
+  --green: #1a1a1a;
+  --dim: #666;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  transition: background .3s, color .3s;
+}
+
+.container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+/* ---- status bar ---- */
+.status-bar {
+  background: var(--card);
+  border-bottom: 4px solid var(--border);
+  padding: 6px 24px;
+  font-size: 0.7rem;
+  color: var(--dim);
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+  transition: background .3s, border-color .3s;
+}
+.status-bar span { white-space: nowrap; }
+
+/* ---- header ---- */
+header {
+  margin: 16px;
+  padding: 16px 24px;
+  border: 4px solid var(--border);
+  background: var(--card);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background .3s, border-color .3s;
+}
+header h1 {
+  font-size: 1rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color .3s;
+}
+header nav a {
+  color: var(--fg);
+  text-transform: uppercase;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  transition: color .3s;
+}
+header nav a:hover { color: var(--accent); text-decoration: none; }
+
+section { padding: 60px 0; }
+
+/* ---- hero ---- */
+.hero { padding: 80px 0 60px; }
+.hero .prompt { color: var(--green); font-size: 0.85rem; margin-bottom: 12px; }
+.hero .prompt::before { content: '$ '; color: var(--dim); }
+.hero h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 1.1;
+  position: relative;
+  display: inline-block;
+}
+.hero .highlight { background: var(--accent); color: var(--bg); padding: 2px 10px; display: inline-block; transition: background .3s, color .3s; }
+.hero p { color: var(--dim); margin-top: 16px; max-width: 480px; }
+
+/* glitch effect */
+.glitch::before, .glitch::after {
+  content: attr(data-text);
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+}
+.glitch::before {
+  animation: glitch-top 0.3s ease-in-out infinite alternate;
+  clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+  color: #f85149;
+}
+.glitch::after {
+  animation: glitch-bottom 0.3s ease-in-out infinite alternate;
+  clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+  color: #58a6ff;
+}
+@keyframes glitch-top {
+  0% { transform: translate(0); }
+  25% { transform: translate(-2px, 1px); }
+  50% { transform: translate(2px, -1px); }
+  75% { transform: translate(-1px, 2px); }
+  100% { transform: translate(1px, -2px); }
+}
+@keyframes glitch-bottom {
+  0% { transform: translate(0); }
+  25% { transform: translate(2px, -1px); }
+  50% { transform: translate(-2px, 1px); }
+  75% { transform: translate(1px, -2px); }
+  100% { transform: translate(-1px, 2px); }
+}
+
+.links { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
+.links a, .links button {
+  padding: 10px 24px;
+  border: 3px solid var(--border);
+  color: var(--fg);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  transition: .12s;
+  font-family: 'JetBrains Mono', monospace;
+  background: none;
+  cursor: pointer;
+}
+.links a:hover, .links button:hover {
+  background: var(--accent);
+  color: #000;
+  border-color: var(--accent);
+  text-decoration: none;
+  transform: translate(-3px, -3px);
+  box-shadow: 5px 5px 0 var(--border);
+}
+
+/* ---- section headers ---- */
+h2 {
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  font-weight: 800;
+  margin-bottom: 24px;
+  display: inline-block;
+}
+h2::before { content: '## '; color: var(--dim); font-weight: 400; }
+h2::after {
+  content: '';
+  display: block;
+  height: 4px;
+  background: var(--border);
+  margin-top: 4px;
+  width: 100%;
+  transition: background .3s;
+}
+
+/* ---- about ---- */
+#about p { color: var(--dim); max-width: 520px; }
+
+/* ---- skills ---- */
+.skills-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+.skills-grid span {
+  padding: 6px 16px;
+  border: 3px solid var(--border);
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 700;
+  transition: .12s;
+  color: var(--fg);
+}
+.skills-grid span:hover {
+  background: var(--accent);
+  color: #000;
+  border-color: var(--accent);
+  transform: translate(-2px, -2px);
+  box-shadow: 3px 3px 0 var(--border);
+}
+
+/* ---- projects / experience / contributions ---- */
+.projects-grid { display: flex; flex-direction: column; gap: 12px; }
+.project {
+  padding: 20px 24px;
+  border: 4px solid var(--border);
+  background: var(--card);
+  transition: .12s, background .3s, border-color .3s;
+}
+.project:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 6px 6px 0 var(--border);
+}
+.project h3 { font-size: 1rem; }
+.project h3 a { color: var(--fg); text-decoration: none; }
+.project h3 a:hover { color: var(--accent); text-decoration: none; }
+.project .desc { color: var(--dim); font-size: 0.85rem; margin-top: 4px; }
+.project-meta { margin-top: 12px; display: flex; gap: 16px; font-size: 0.75rem; color: var(--dim); }
+.project-meta .dot {
+  display: inline-block; width: 10px; height: 10px;
+  border-radius: 50%; margin-right: 4px;
+}
+
+
+
+
+/* ---- modal ---- */
+#topBtn {
+  position: fixed; bottom: 24px; right: 24px; z-index: 99;
+  font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase;
+  background: var(--card); color: var(--fg);
+  border: 4px solid var(--border); padding: 10px 16px;
+  cursor: pointer; transition: .12s; display: none;
+}
+#topBtn:hover { background: var(--accent); color: #000; border-color: var(--accent); transform: translate(-2px,-2px); box-shadow: 4px 4px 0 var(--border); }
+
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); align-items: center; justify-content: center; z-index: 100; }
+.modal-overlay.show { display: flex; }
+.modal { background: var(--card); border: 4px solid var(--border); padding: 40px; max-width: 480px; margin: 16px; text-align: center; transition: background .3s, border-color .3s; }
+.modal p { color: var(--fg); font-size: 0.95rem; margin-bottom: 24px; line-height: 1.6; }
+.modal .prompt-line { color: var(--green); font-size: 0.8rem; margin-bottom: 8px; }
+.modal .prompt-line::before { content: '$ '; color: var(--dim); }
+.modal-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.modal-actions button {
+  font-family: 'JetBrains Mono', monospace; background: none; border: 3px solid var(--border);
+  color: var(--fg); padding: 10px 24px; font-size: 0.8rem; text-transform: uppercase;
+  letter-spacing: 0.05em; cursor: pointer; transition: .12s;
+}
+.modal-actions button:hover {
+  background: var(--accent); color: #000; border-color: var(--accent);
+  transform: translate(-2px, -2px); box-shadow: 4px 4px 0 var(--border);
+}
+.modal-actions .danger:hover { background: #f85149; border-color: #f85149; color: #fff; }
+
+.cursor { color: var(--green); animation: blink 0.8s step-end infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.dot-pulse { color: var(--green); animation: pulse 2s ease-in-out infinite; display: inline-block; }
+@keyframes pulse { 0%, 100% { opacity: 1; text-shadow: 0 0 0 var(--green); } 50% { opacity: 0.4; text-shadow: 0 0 8px var(--green); } }
+
+@media (max-width: 600px) {
+  .hero h1 { font-size: 1.6rem; }
+  section { padding: 40px 0; }
+  header { flex-direction: column; gap: 12px; text-align: center; }
+  header nav a { margin: 0 8px; }
+  .status-bar { font-size: 0.6rem; padding: 4px 12px; }
+}
+</style>
+</head>
+<body>
+
+<!-- status bar -->
+<div class="status-bar" id="statusBar">
+<span>USER: v4cachy</span>
+<span style="color:var(--green);font-weight:700" title="this website was built on cachyos">CACHYOS</span>
+<span>SHELL: bash</span>
+
+
+</div>
+
+<header>
+<h1 id="logo">🐧 Ruknun Shadid Tawsif 🐧</h1>
+<nav>
+<a href="https://github.com/v4cachy" target="_blank">GitHub</a>
+<a href="https://v4cachy.github.io/Lenovo-Legion-5/" target="_blank">MY BUILD</a>
+<a href="#" onclick="toggleTheme();return false" id="themeBtn">Light</a>
+<a href="#projects">Projects</a>
+<a href="https://mail.google.com/mail/?view=cm&fs=1&to=mrmysteriousx5@gmail.com" target="_blank">Email</a>
+<a href="#" onclick="showLogoutModal();return false">Logout</a>
+</nav>
+</header>
+
+<section class="hero">
+<div class="container">
+<p class="prompt"><span id="typed"></span><span class="cursor">█</span></p>
+<h1 id="glitchTarget" data-text="I BUILD TOOLS FOR LEGION ON LINUX">I BUILD<br>TOOLS FOR<br>LEGION ON <span class="highlight">LINUX</span></h1>
+<p>Python, C. Building Linux tools for Lenovo Legion laptops — one idea at a time.</p>
+<p id="build" class="dim" style="margin-top:20px;font-size:0.8rem"><span class="dot-pulse">●</span> Currently building: <a href="https://github.com/v4cachy/legion-linux-toolkit" style="color:#8b949e;text-decoration:underline;text-underline-offset:3px">legion-linux-toolkit</a></p>
+
+</div>
+</section>
+
+<section id="about">
+<div class="container">
+<h2>About</h2>
+<p>Linux enthusiast building tools for Lenovo Legion laptops. Python, C, kernel tinkering. Open source contributor. Always shipping.</p>
+</div>
+</section>
+
+<section id="skills">
+<div class="container">
+<h2>Skills</h2>
+<div class="skills-grid">
+<span>Python</span><span>C</span><span>HTML</span>
+<span>Linux</span><span>Kernel</span><span>KDE Plasma</span>
+<span>Git</span>
+</div>
+</div>
+</section>
+
+<section id="projects">
+<div class="container">
+<h2>Projects</h2>
+<div class="projects-grid">
+<div class="project"><h3><a href="https://github.com/v4cachy/legion-linux-toolkit" target="_blank">legion-linux-toolkit</a></h3><div class="desc">Native Linux power management dashboard for Lenovo Legion laptops — profiles, RGB, fan control, OC, battery.</div><div class="project-meta"><span><span class="dot" style="background:#3572A5"></span>Python</span><span>★ 2</span></div></div>
+<div class="project"><h3><a href="https://github.com/v4cachy/Lenovo-Legion-5" target="_blank">Lenovo-Legion-5</a></h3><div class="desc">Lenovo Legion 5 15ACH6H — Ryzen 7 5800H · RTX 3060 · CachyOS KDE. The most detailed Linux gaming laptop spec page.</div><div class="project-meta"><span><span class="dot" style="background:#e34c26"></span>HTML</span></div></div>
+<div class="project"><h3><a href="https://github.com/v4cachy/SteamAppIdentify" target="_blank">SteamAppIdentify</a></h3><div class="desc">Steam app identifier tool.</div><div class="project-meta"><span><span class="dot" style="background:#3572A5"></span>Python</span></div></div>
+</div>
+</div>
+</section>
+
+<section id="activity">
+<div class="container">
+<h2>Activity</h2>
+<div style="border:4px solid var(--border);padding:16px;background:var(--card);overflow-x:auto;transition:border-color .3s,background .3s">
+<img src="https://ghchart.rshah.org/v4cachy" alt="GitHub contribution graph" style="width:100%;display:block;min-width:600px">
+<div style="margin-top:8px;color:var(--dim);font-size:0.75rem;text-align:center">Total contributions: <span id="totalContrib">...</span></div>
+</div>
+</div>
+</section>
+
+<section id="experience">
+<div class="container">
+<h2>Experience</h2>
+<div class="projects-grid">
+<div class="project"><h3>legion-linux-toolkit</h3><div class="desc">A KDE Plasma dashboard for managing Legion laptops — power profiles, fan curves, RGB keyboard, overclocking, and battery limits. Built on top of the LenovoLegionLinux driver; the community did the reverse-engineering, I made it user-friendly.</div></div>
+<div class="project"><h3>Lenovo-Legion-5</h3><div class="desc">A detailed hardware reference page for the Legion 5 15ACH6H on CachyOS — full specs, gaming benchmarks, GPU modes, fan curves, and Linux compatibility notes. All in one HTML file with zero dependencies.</div></div>
+<div class="project"><h3>SteamAppIdentify</h3><div class="desc">Practiced REST APIs, JSON parsing, and CLI structure by building a Steam app lookup tool in Python.</div></div>
+</div>
+</div>
+</section>
+
+<section id="contributions">
+<div class="container">
+<h2>Contributions</h2>
+<div class="projects-grid">
+<div class="project"><h3><a href="https://github.com/v4cachy/LenovoLegionLinux/commit/a8ed113" target="_blank">LenovoLegionLinux</a></h3><div class="desc">Contributed ACPI access fixes for Kernel 7.x compatibility.</div><div class="project-meta"><span><span class="dot" style="background:#555555"></span>C</span></div></div>
+</div>
+</div>
+</section>
+
+<button id="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Top</button>
+
+<div class="modal-overlay" id="logoutModal">
+<div class="modal">
+<p class="prompt-line">$ <span id="typedModal"></span><span class="cursor">█</span></p>
+<p>thanks for looking through my portfolio<br>and i'll see you again next time</p>
+<div class="modal-actions">
+<button onclick="closeTab()" class="danger">Logout</button>
+<button onclick="hideLogoutModal()">Stay</button>
+</div>
+</div>
+</div>
+
+<script>
+// ---- typewriter ----
+const text = 'echo "hello, world"';
+let i = 0;
+const el = document.getElementById('typed');
+function type() {
+  if (i < text.length) {
+    el.textContent += text.charAt(i);
+    i++;
+    setTimeout(type, 40 + Math.random() * 30);
+  }
+}
+type();
+
+// ---- fetch total contributions ----
+fetch('https://api.github.com/users/v4cachy')
+  .then(r => r.json())
+  .then(d => { document.getElementById('totalContrib').textContent = d.public_repos + ' repos · ' + (d.followers || '0') + ' followers'; })
+  .catch(() => { document.getElementById('totalContrib').textContent = '—'; });
+
+// ---- glitch on hover ----
+document.getElementById('glitchTarget').addEventListener('mouseenter', function() {
+  this.classList.add('glitch');
+  setTimeout(() => this.classList.remove('glitch'), 600);
+});
+
+// ---- theme toggle ----
+function toggleTheme() {
+  document.body.classList.toggle('light');
+  document.getElementById('themeBtn').textContent =
+    document.body.classList.contains('light') ? 'Dark' : 'Light';
+}
+
+// ---- keyboard shortcuts ----
+document.addEventListener('keydown', function(e) {
+  if (e.target.tagName === 'INPUT') return;
+  const map = { p: 'projects', e: 'experience', h: 'build' };
+  const id = map[e.key.toLowerCase()];
+  if (id) document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+});
+
+// ---- scroll to top ----
+window.addEventListener('scroll', function() {
+  document.getElementById('topBtn').style.display = window.scrollY > 300 ? 'block' : 'none';
+});
+
+// ---- modal ----
+function showLogoutModal() {
+  document.getElementById('logoutModal').classList.add('show');
+  typeModal();
+}
+function hideLogoutModal() {
+  document.getElementById('logoutModal').classList.remove('show');
+  document.getElementById('typedModal').textContent = '';
+  iModal = 0;
+}
+function closeTab() { window.close(); }
+
+const textModal = 'echo "see you later"';
+let iModal = 0;
+function typeModal() {
+  const el = document.getElementById('typedModal');
+  el.textContent = '';
+  iModal = 0;
+  function tick() {
+    if (iModal < textModal.length) {
+      el.textContent += textModal.charAt(iModal);
+      iModal++;
+      setTimeout(tick, 40 + Math.random() * 30);
+    }
+  }
+  tick();
+}
+</script>
+</body>
+</html>
