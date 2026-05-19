@@ -1,11 +1,19 @@
 # portfolio
 
-Minimal developer portfolio. Edit `index.html` and replace `yourusername` / `Your Name` with your own.
+Terminal-inspired developer portfolio built with vanilla HTML/CSS/JS.
+
+## Live
+
+https://v4cachy.github.io/portfolio/
 
 ## Usage
-
-Open `index.html` in a browser, or serve it locally:
 
 ```bash
 npx serve .
 ```
+
+Open `http://localhost:3000` in a browser.
+
+## Deploy
+
+Push to `main` — GitHub Pages auto-deploys from the root directory.
