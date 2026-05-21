@@ -4,8 +4,7 @@ i just created this for no reason so don't ask but feel free to check it.
 
 ## Live
 
-https://v4cachy.github.io/portfolio/
-
+(https://vvat3r.github.io/portfolio/)
 ## What's inside
 
 - terminal-inspired dark/light theme
