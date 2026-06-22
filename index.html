@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PORTFOLIO</title>
+<title>v4cachy</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='14' fill='%23161b22'/><text x='50' y='68' font-family='monospace' font-size='56' font-weight='bold' fill='%233fb950' text-anchor='middle'>$</text></svg>">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap');
@@ -15,7 +15,7 @@ a, button, [onclick] { cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3
   --bg: #0d1117;
   --fg: #c9d1d9;
   --card: #161b22;
-  --border: #c9d1d9;
+  --border: #30363d;
   --accent: #ffdd00;
   --green: #3fb950;
   --dim: #8b949e;
@@ -24,7 +24,7 @@ a, button, [onclick] { cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3
   --bg: #f5f5f5;
   --fg: #1a1a1a;
   --card: #ffffff;
-  --border: #1a1a1a;
+  --border: #d0d0d0;
   --accent: #1a1a1a;
   --green: #1a1a1a;
   --dim: #666;
@@ -41,106 +41,52 @@ body {
 
 .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
 
-/* ---- status bar ---- */
 .status-bar {
-  background: var(--card);
-  border-bottom: 4px solid var(--border);
   padding: 6px 24px;
   font-size: 0.7rem;
   color: var(--dim);
-  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
-  transition: background .3s, border-color .3s;
+  display: flex; justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+  transition: border-color .3s;
 }
-.status-bar span { white-space: nowrap; }
 
-/* ---- header ---- */
 header {
-  margin: 16px;
-  padding: 16px 24px;
-  border: 4px solid var(--border);
-  background: var(--card);
+  padding: 20px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: background .3s, border-color .3s;
 }
-header h1 {
-  font-size: 1rem;
-  color: var(--accent);
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: color .3s;
-}
+header h1 { font-size: 1rem; font-weight: 700; cursor: pointer; }
 header nav a {
-  color: var(--fg);
+  color: var(--dim);
   text-transform: uppercase;
   text-decoration: none;
   margin-left: 20px;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   letter-spacing: 0.05em;
   transition: color .3s;
 }
-header nav a:hover { color: var(--accent); text-decoration: none; }
+header nav a:hover { color: var(--accent); }
 
 section { padding: 60px 0; }
 
-/* ---- hero ---- */
 .hero { padding: 80px 0 60px; }
 .hero .prompt { color: var(--green); font-size: 0.85rem; margin-bottom: 12px; }
 .hero .prompt::before { content: '$ '; color: var(--dim); }
-.hero h1 {
-  font-size: 2.5rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  line-height: 1.1;
-  position: relative;
-  display: inline-block;
-}
-.hero .highlight { background: var(--accent); color: var(--bg); padding: 2px 10px; display: inline-block; transition: background .3s, color .3s; }
+.hero h1 { font-size: 2.2rem; font-weight: 800; line-height: 1.15; text-transform: uppercase; }
+.hero .highlight { background: var(--accent); color: var(--bg); padding: 2px 8px; display: inline-block; transition: background .3s, color .3s; }
 .hero p { color: var(--dim); margin-top: 16px; max-width: 480px; }
-
-/* glitch effect */
-.glitch::before, .glitch::after {
-  content: attr(data-text);
-  position: absolute; top: 0; left: 0;
-  width: 100%; height: 100%;
-  pointer-events: none;
-}
-.glitch::before {
-  animation: glitch-top 0.3s ease-in-out infinite alternate;
-  clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
-  color: #f85149;
-}
-.glitch::after {
-  animation: glitch-bottom 0.3s ease-in-out infinite alternate;
-  clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
-  color: #58a6ff;
-}
-@keyframes glitch-top {
-  0% { transform: translate(0); }
-  25% { transform: translate(-2px, 1px); }
-  50% { transform: translate(2px, -1px); }
-  75% { transform: translate(-1px, 2px); }
-  100% { transform: translate(1px, -2px); }
-}
-@keyframes glitch-bottom {
-  0% { transform: translate(0); }
-  25% { transform: translate(2px, -1px); }
-  50% { transform: translate(-2px, 1px); }
-  75% { transform: translate(1px, -2px); }
-  100% { transform: translate(-1px, 2px); }
-}
 
 .links { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
 .links a, .links button {
-  padding: 10px 24px;
-  border: 3px solid var(--border);
+  padding: 8px 20px;
+  border: 1px solid var(--border);
   color: var(--fg);
   text-decoration: none;
   text-transform: uppercase;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   letter-spacing: 0.05em;
-  transition: .12s;
+  transition: .2s;
   font-family: 'JetBrains Mono', monospace;
   background: none;
   cursor: pointer;
@@ -149,43 +95,29 @@ section { padding: 60px 0; }
   background: var(--accent);
   color: #000;
   border-color: var(--accent);
-  text-decoration: none;
   transform: translate(-3px, -3px);
   box-shadow: 5px 5px 0 var(--border);
 }
 
-/* ---- section headers ---- */
 h2 {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   text-transform: uppercase;
-  font-weight: 800;
+  font-weight: 700;
   margin-bottom: 24px;
-  display: inline-block;
 }
 h2::before { content: '## '; color: var(--dim); font-weight: 400; }
-h2::after {
-  content: '';
-  display: block;
-  height: 4px;
-  background: var(--border);
-  margin-top: 4px;
-  width: 100%;
-  transition: background .3s;
-}
 
-/* ---- about ---- */
 #about p { color: var(--dim); max-width: 520px; }
 
-/* ---- skills ---- */
-.skills-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+.skills-grid { display: flex; flex-wrap: wrap; gap: 6px; }
 .skills-grid span {
-  padding: 6px 16px;
-  border: 3px solid var(--border);
+  padding: 4px 14px;
+  border: 1px solid var(--border);
   text-transform: uppercase;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 700;
-  transition: .12s;
   color: var(--fg);
+  transition: .12s;
 }
 .skills-grid span:hover {
   background: var(--accent);
@@ -195,13 +127,12 @@ h2::after {
   box-shadow: 3px 3px 0 var(--border);
 }
 
-/* ---- projects / experience / contributions ---- */
-.projects-grid { display: flex; flex-direction: column; gap: 12px; }
+.project-list { display: flex; flex-direction: column; gap: 8px; }
 .project {
-  padding: 20px 24px;
-  border: 4px solid var(--border);
+  padding: 16px 20px;
+  border: 1px solid var(--border);
   background: var(--card);
-  transition: .12s, background .3s, border-color .3s;
+  transition: .12s;
 }
 .project:hover {
   transform: translate(-3px, -3px);
@@ -209,38 +140,31 @@ h2::after {
 }
 .project h3 { font-size: 1rem; }
 .project h3 a { color: var(--fg); text-decoration: none; }
-.project h3 a:hover { color: var(--accent); text-decoration: none; }
+.project h3 a:hover { color: var(--accent); }
 .project .desc { color: var(--dim); font-size: 0.85rem; margin-top: 4px; }
-.project-meta { margin-top: 12px; display: flex; gap: 16px; font-size: 0.75rem; color: var(--dim); }
-.project-meta .dot {
-  display: inline-block; width: 10px; height: 10px;
-  border-radius: 50%; margin-right: 4px;
-}
+.project-meta { margin-top: 8px; display: flex; gap: 16px; font-size: 0.75rem; color: var(--dim); flex-wrap: wrap; }
+.project-meta .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 4px; }
 
-
-
-
-/* ---- modal ---- */
 #topBtn {
   position: fixed; bottom: 24px; right: 24px; z-index: 99;
   font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase;
   background: var(--card); color: var(--fg);
-  border: 4px solid var(--border); padding: 10px 16px;
-  cursor: pointer; transition: .12s; display: none;
+  border: 1px solid var(--border); padding: 8px 14px;
+  cursor: pointer; transition: .2s; display: none;
 }
 #topBtn:hover { background: var(--accent); color: #000; border-color: var(--accent); transform: translate(-2px,-2px); box-shadow: 4px 4px 0 var(--border); }
 
 .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); align-items: center; justify-content: center; z-index: 100; }
 .modal-overlay.show { display: flex; }
-.modal { background: var(--card); border: 4px solid var(--border); padding: 40px; max-width: 480px; margin: 16px; text-align: center; transition: background .3s, border-color .3s; }
+.modal { background: var(--card); border: 1px solid var(--border); padding: 40px; max-width: 480px; margin: 16px; text-align: center; transition: background .3s, border-color .3s; }
 .modal p { color: var(--fg); font-size: 0.95rem; margin-bottom: 24px; line-height: 1.6; }
 .modal .prompt-line { color: var(--green); font-size: 0.8rem; margin-bottom: 8px; }
 .modal .prompt-line::before { content: '$ '; color: var(--dim); }
 .modal-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 .modal-actions button {
-  font-family: 'JetBrains Mono', monospace; background: none; border: 3px solid var(--border);
-  color: var(--fg); padding: 10px 24px; font-size: 0.8rem; text-transform: uppercase;
-  letter-spacing: 0.05em; cursor: pointer; transition: .12s;
+  font-family: 'JetBrains Mono', monospace; background: none; border: 1px solid var(--border);
+  color: var(--fg); padding: 8px 20px; font-size: 0.75rem; text-transform: uppercase;
+  letter-spacing: 0.05em; cursor: pointer; transition: .2s;
 }
 .modal-actions button:hover {
   background: var(--accent); color: #000; border-color: var(--accent);
@@ -251,47 +175,44 @@ h2::after {
 .cursor { color: var(--green); animation: blink 0.8s step-end infinite; }
 @keyframes blink { 50% { opacity: 0; } }
 .dot-pulse { color: var(--green); animation: pulse 2s ease-in-out infinite; display: inline-block; }
-@keyframes pulse { 0%, 100% { opacity: 1; text-shadow: 0 0 0 var(--green); } 50% { opacity: 0.4; text-shadow: 0 0 8px var(--green); } }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 
 @media (max-width: 600px) {
-  .hero h1 { font-size: 1.6rem; }
+  .hero h1 { font-size: 1.4rem; }
   section { padding: 40px 0; }
-  header { flex-direction: column; gap: 12px; text-align: center; }
   header nav a { margin: 0 8px; }
-  .status-bar { font-size: 0.6rem; padding: 4px 12px; }
+  .status-bar { font-size: 0.6rem; }
 }
 </style>
 </head>
 <body>
 
-<!-- status bar -->
-<div class="status-bar" id="statusBar">
+<div class="status-bar">
 <span>USER: v4cachy</span>
-<span style="color:var(--green);font-weight:700" title="this website was built on cachyos">CACHYOS</span>
+<span style="color:var(--green);font-weight:700">CACHYOS</span>
 <span>SHELL: bash</span>
-
-
 </div>
 
 <header>
-<h1 id="logo">🐧 Ruknun Shadid Tawsif 🐧</h1>
+<div class="container" style="display:flex;justify-content:space-between;align-items:center;width:100%">
+<h1 id="logo">Ruknun Shadid Tawsif</h1>
 <nav>
 <a href="https://github.com/v4cachy" target="_blank">GitHub</a>
-<a href="build/">My System</a>
+<a href="build/">System</a>
 <a href="#" onclick="toggleTheme();return false" id="themeBtn">Light</a>
 <a href="#projects">Projects</a>
 <a href="https://mail.google.com/mail/?view=cm&fs=1&to=mrmysteriousx5@gmail.com" target="_blank">Email</a>
 <a href="#" onclick="showLogoutModal();return false">Logout</a>
 </nav>
+</div>
 </header>
 
 <section class="hero">
 <div class="container">
 <p class="prompt"><span id="typed"></span><span class="cursor">█</span></p>
-<h1 id="glitchTarget" data-text="I BUILD TOOLS FOR LEGION ON LINUX">I BUILD<br>TOOLS FOR<br>LEGION ON <span class="highlight">LINUX</span></h1>
+<h1>I BUILD TOOLS<br>FOR LEGION ON <span class="highlight">LINUX</span></h1>
 <p>Python, C. Building Linux tools for Lenovo Legion laptops — one idea at a time.</p>
-<p id="building" class="dim" style="margin-top:20px;font-size:0.8rem"><span class="dot-pulse">●</span> Currently building: <a href="https://github.com/v4cachy/legion-linux-toolkit" style="color:#8b949e;text-decoration:underline;text-underline-offset:3px">legion-linux-toolkit</a></p>
-
+<p style="margin-top:20px;font-size:0.8rem;color:var(--dim)"><span class="dot-pulse">●</span> Currently building: <a href="https://github.com/v4cachy/legion-linux-toolkit" style="color:var(--dim);text-decoration:underline;text-underline-offset:3px">legion-linux-toolkit</a></p>
 </div>
 </section>
 
@@ -316,10 +237,8 @@ h2::after {
 <section id="projects">
 <div class="container">
 <h2>Projects</h2>
-<div class="projects-grid">
-<div class="project"><h3><a href="https://github.com/v4cachy/legion-linux-toolkit" target="_blank">legion-linux-toolkit</a></h3><div class="desc">Native Linux power management dashboard for Lenovo Legion laptops — profiles, RGB, fan control, OC, battery.</div><div class="project-meta"><span><span class="dot" style="background:#3572A5"></span>Python</span><span>★ 2</span></div></div>
-
-<div class="project"><h3><a href="https://github.com/v4cachy/SteamAppIdentify" target="_blank">SteamAppIdentify</a></h3><div class="desc">Steam app identifier tool.</div><div class="project-meta"><span><span class="dot" style="background:#3572A5"></span>Python</span></div></div>
+<div class="project-list" id="repoList">
+<p style="color:var(--dim)">Loading...</p>
 </div>
 </div>
 </section>
@@ -327,7 +246,7 @@ h2::after {
 <section id="activity">
 <div class="container">
 <h2>Activity</h2>
-<div style="border:4px solid var(--border);padding:16px;background:var(--card);overflow-x:auto;transition:border-color .3s,background .3s">
+<div style="border:1px solid var(--border);padding:16px;background:var(--card);overflow-x:auto;transition:border-color .3s,background .3s">
 <img src="https://ghchart.rshah.org/v4cachy" alt="GitHub contribution graph" style="width:100%;display:block;min-width:600px">
 <div style="margin-top:8px;color:var(--dim);font-size:0.75rem;text-align:center">Total contributions: <span id="totalContrib">...</span></div>
 </div>
@@ -337,9 +256,8 @@ h2::after {
 <section id="experience">
 <div class="container">
 <h2>Experience</h2>
-<div class="projects-grid">
+<div class="project-list">
 <div class="project"><h3>legion-linux-toolkit</h3><div class="desc">A KDE Plasma dashboard for managing Legion laptops — power profiles, fan curves, RGB keyboard, overclocking, and battery limits. Built on top of the LenovoLegionLinux driver; the community did the reverse-engineering, I made it user-friendly.</div></div>
-
 <div class="project"><h3>SteamAppIdentify</h3><div class="desc">Practiced REST APIs, JSON parsing, and CLI structure by building a Steam app lookup tool in Python.</div></div>
 </div>
 </div>
@@ -348,7 +266,7 @@ h2::after {
 <section id="contributions">
 <div class="container">
 <h2>Contributions</h2>
-<div class="projects-grid">
+<div class="project-list">
 <div class="project"><h3><a href="https://github.com/v4cachy/LenovoLegionLinux/commit/a8ed113" target="_blank">LenovoLegionLinux</a></h3><div class="desc">Contributed ACPI access fixes for Kernel 7.x compatibility.</div><div class="project-meta"><span><span class="dot" style="background:#555555"></span>C</span></div></div>
 </div>
 </div>
@@ -368,7 +286,6 @@ h2::after {
 </div>
 
 <script>
-// ---- typewriter ----
 const text = 'echo "hello, world"';
 let i = 0;
 const el = document.getElementById('typed');
@@ -381,39 +298,28 @@ function type() {
 }
 type();
 
-// ---- fetch total contributions ----
 fetch('https://api.github.com/users/v4cachy')
   .then(r => r.json())
   .then(d => { document.getElementById('totalContrib').textContent = d.public_repos + ' repos · ' + (d.followers || '0') + ' followers'; })
   .catch(() => { document.getElementById('totalContrib').textContent = '—'; });
 
-// ---- glitch on hover ----
-document.getElementById('glitchTarget').addEventListener('mouseenter', function() {
-  this.classList.add('glitch');
-  setTimeout(() => this.classList.remove('glitch'), 600);
-});
-
-// ---- theme toggle ----
 function toggleTheme() {
   document.body.classList.toggle('light');
   document.getElementById('themeBtn').textContent =
     document.body.classList.contains('light') ? 'Dark' : 'Light';
 }
 
-// ---- keyboard shortcuts ----
 document.addEventListener('keydown', function(e) {
   if (e.target.tagName === 'INPUT') return;
-  const map = { p: 'projects', e: 'experience', h: 'building' };
+  const map = { p: 'projects', e: 'experience' };
   const id = map[e.key.toLowerCase()];
   if (id) document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
 });
 
-// ---- scroll to top ----
 window.addEventListener('scroll', function() {
   document.getElementById('topBtn').style.display = window.scrollY > 300 ? 'block' : 'none';
 });
 
-// ---- modal ----
 function showLogoutModal() {
   document.getElementById('logoutModal').classList.add('show');
   typeModal();
@@ -440,6 +346,65 @@ function typeModal() {
   }
   tick();
 }
+
+async function loadRepos() {
+  try {
+    const res = await fetch('https://api.github.com/users/v4cachy/repos?sort=updated&per_page=50&type=all');
+    const repos = await res.json();
+    const own = repos.filter(r => !r.fork);
+    const forked = repos.filter(r => r.fork);
+
+    const container = document.getElementById('repoList');
+    container.innerHTML = '';
+
+    if (own.length === 0 && forked.length === 0) {
+      container.innerHTML = '<p style="color:var(--dim)">No repositories found.</p>';
+      return;
+    }
+
+    const colors = { Python: '#3572A5', C: '#555555', HTML: '#e34c26', JavaScript: '#f1e05a', TypeScript: '#3178c6', Shell: '#89e051' };
+
+    own.sort((a, b) => b.stargazers_count - a.stargazers_count);
+    own.forEach(r => {
+      const div = document.createElement('div');
+      div.className = 'project';
+      div.innerHTML = `
+        <h3><a href="${r.html_url}" target="_blank">${r.name}</a></h3>
+        <div class="desc">${r.description || ''}</div>
+        <div class="project-meta">
+          ${r.language ? '<span><span class="dot" style="background:' + (colors[r.language] || '#8b949e') + '"></span>' + r.language + '</span>' : ''}
+          ${r.stargazers_count > 0 ? '<span>★ ' + r.stargazers_count + '</span>' : ''}
+          ${r.forks_count > 0 ? '<span>⑂ ' + r.forks_count + '</span>' : ''}
+        </div>`;
+      container.appendChild(div);
+    });
+
+    if (forked.length > 0) {
+      const sep = document.createElement('p');
+      sep.style.cssText = 'color:var(--dim);font-size:0.75rem;margin-top:16px;margin-bottom:4px';
+      sep.textContent = '— forks —';
+      container.appendChild(sep);
+
+      forked.forEach(r => {
+        const div = document.createElement('div');
+        div.className = 'project';
+        div.innerHTML = `
+          <h3><a href="${r.html_url}" target="_blank">${r.name}</a></h3>
+          <div class="desc">${r.description || ''}</div>
+          <div class="project-meta">
+            ${r.language ? '<span><span class="dot" style="background:' + (colors[r.language] || '#8b949e') + '"></span>' + r.language + '</span>' : ''}
+            ${r.stargazers_count > 0 ? '<span>★ ' + r.stargazers_count + '</span>' : ''}
+            <span style="color:var(--dim)">fork</span>
+          </div>`;
+        container.appendChild(div);
+      });
+    }
+  } catch {
+    document.getElementById('repoList').innerHTML = '<p style="color:var(--dim)">Failed to load repositories.</p>';
+  }
+}
+
+loadRepos();
 </script>
 </body>
 </html>
