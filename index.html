@@ -297,7 +297,7 @@ function type() {
 type();
 
 fetch('https://api.github.com/users/VVAT3R')
-  .then(r => r.json())
+  .then(r => r.ok ? r.json() : Promise.reject())
   .then(d => { document.getElementById('totalContrib').textContent = d.public_repos + ' repos · ' + (d.followers || '0') + ' followers'; })
   .catch(() => { document.getElementById('totalContrib').textContent = '—'; });
 
@@ -347,8 +347,10 @@ function typeModal() {
 
 async function loadRepos() {
   try {
-    const res = await fetch('https://api.github.com/users/VVAT3R/repos?sort=updated&per_page=50&type=all');
+    const res = await fetch('https://api.github.com/users/VVAT3R/repos?sort=updated&per_page=50');
+    if (!res.ok) throw new Error('GitHub API returned ' + res.status);
     const repos = await res.json();
+    if (!Array.isArray(repos)) throw new Error('Unexpected response');
     const own = repos.filter(r => !r.fork);
     const forked = repos.filter(r => r.fork);
 
@@ -404,8 +406,10 @@ async function loadRepos() {
         container.appendChild(div);
       });
     }
-  } catch {
+  } catch (e) {
+    console.error(e);
     document.getElementById('repoList').innerHTML = '<p style="color:var(--dim)">Failed to load repositories.</p>';
+    document.getElementById('skillsGrid').innerHTML = '<p style="color:var(--dim);font-size:0.8rem">Failed to load.</p>';
   }
 }
 
