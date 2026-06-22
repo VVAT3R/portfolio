@@ -226,10 +226,8 @@ h2::before { content: '## '; color: var(--dim); font-weight: 400; }
 <section id="skills">
 <div class="container">
 <h2>Skills</h2>
-<div class="skills-grid">
-<span>Python</span><span>C</span><span>HTML</span>
-<span>Linux</span><span>Kernel</span><span>KDE Plasma</span>
-<span>Git</span>
+    <div class="skills-grid" id="skillsGrid">
+<p style="color:var(--dim);font-size:0.8rem">Loading...</p>
 </div>
 </div>
 </section>
@@ -362,7 +360,14 @@ async function loadRepos() {
       return;
     }
 
-    const colors = { Python: '#3572A5', C: '#555555', HTML: '#e34c26', JavaScript: '#f1e05a', TypeScript: '#3178c6', Shell: '#89e051' };
+    const colors = { Python: '#3572A5', C: '#555555', HTML: '#e34c26', JavaScript: '#f1e05a', TypeScript: '#3178c6', Shell: '#89e051', QML: '#44a51c', Makefile: '#427819' };
+
+    const langSet = new Set();
+    repos.forEach(r => { if (r.language) langSet.add(r.language); });
+    const langs = [...langSet].sort();
+    document.getElementById('skillsGrid').innerHTML = langs.map(l =>
+      `<span>${l}</span>`
+    ).join('');
 
     own.sort((a, b) => b.stargazers_count - a.stargazers_count);
     own.forEach(r => {
