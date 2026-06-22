@@ -254,9 +254,8 @@ h2::before { content: '## '; color: var(--dim); font-weight: 400; }
 <section id="experience">
 <div class="container">
 <h2>Experience</h2>
-<div class="project-list">
-<div class="project"><h3>legion-linux-toolkit</h3><div class="desc">A KDE Plasma dashboard for managing Legion laptops — power profiles, fan curves, RGB keyboard, overclocking, and battery limits. Built on top of the LenovoLegionLinux driver; the community did the reverse-engineering, I made it user-friendly.</div></div>
-<div class="project"><h3>SteamAppIdentify</h3><div class="desc">Practiced REST APIs, JSON parsing, and CLI structure by building a Steam app lookup tool in Python.</div></div>
+<div class="project-list" id="experienceList">
+<p style="color:var(--dim)">Loading...</p>
 </div>
 </div>
 </section>
@@ -371,6 +370,19 @@ async function loadRepos() {
       `<span>${l}</span>`
     ).join('');
 
+    const expContainer = document.getElementById('experienceList');
+    expContainer.innerHTML = '';
+    const allRepos = [...own, ...forked];
+    allRepos.forEach(r => {
+      const div = document.createElement('div');
+      div.className = 'project';
+      const text = r.fork
+        ? (r.description ? 'Contributed to and worked on ' + r.name + '. ' + r.description : 'Forked and contributed to ' + r.name + '.')
+        : (r.name === 'portfolio' ? 'Built my personal portfolio site. ' + (r.description || '') : 'Built and maintained ' + r.name + '. ' + (r.description || ''));
+      div.innerHTML = `<h3>${r.name}</h3><div class="desc">${text}</div>`;
+      expContainer.appendChild(div);
+    });
+
     own.sort((a, b) => b.stargazers_count - a.stargazers_count);
     own.forEach(r => {
       const div = document.createElement('div');
@@ -410,6 +422,7 @@ async function loadRepos() {
     console.error(e);
     document.getElementById('repoList').innerHTML = '<p style="color:var(--dim)">Failed to load repositories.</p>';
     document.getElementById('skillsGrid').innerHTML = '<p style="color:var(--dim);font-size:0.8rem">Failed to load.</p>';
+    document.getElementById('experienceList').innerHTML = '<p style="color:var(--dim)">Failed to load.</p>';
   }
 }
 
