@@ -20,6 +20,15 @@ a, button, [onclick] { cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3
   --green: #3fb950;
   --dim: #8b949e;
 }
+.light {
+  --bg: #f5f5f5;
+  --fg: #1a1a1a;
+  --card: #ffffff;
+  --border: #d0d0d0;
+  --accent: #1a1a1a;
+  --green: #1a1a1a;
+  --dim: #666;
+}
 
 body {
   background: var(--bg);
@@ -27,6 +36,7 @@ body {
   font-family: 'JetBrains Mono', monospace;
   font-size: 14px;
   line-height: 1.6;
+  transition: background .3s, color .3s;
 }
 
 .container { max-width: 800px; margin: 0 auto; padding: 0 24px; }
@@ -51,38 +61,29 @@ header nav a {
   letter-spacing: 0.05em;
   transition: color .3s;
 }
-header nav a:hover { color: var(--accent); text-decoration: none; }
+header nav a:hover { color: var(--accent); }
 
-.hero { padding: 80px 0 40px; }
+.hero { padding: 80px 0 60px; }
 .hero .prompt { color: var(--green); font-size: 0.85rem; margin-bottom: 12px; }
 .hero .prompt::before { content: '$ '; color: var(--dim); }
 .hero h1 {
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: 800;
   text-transform: uppercase;
-  line-height: 1.2;
+  line-height: 1.15;
 }
-.hero .highlight { background: var(--accent); color: var(--bg); padding: 2px 10px; display: inline-block; }
-.hero p { color: var(--dim); margin-top: 12px; }
+.hero .highlight { background: var(--accent); color: var(--bg); padding: 2px 8px; display: inline-block; transition: background .3s, color .3s; }
+.hero p { color: var(--dim); margin-top: 12px; max-width: 480px; }
 
 h2 {
   font-size: 1.2rem;
   text-transform: uppercase;
-  font-weight: 800;
-  margin-bottom: 20px;
-  display: inline-block;
+  font-weight: 700;
+  margin-bottom: 24px;
 }
 h2::before { content: '## '; color: var(--dim); font-weight: 400; }
-h2::after {
-  content: '';
-  display: block;
-  height: 1px;
-  background: var(--border);
-  margin-top: 4px;
-  width: 100%;
-}
 
-section { padding: 40px 0; }
+section { padding: 60px 0; }
 
 .specs-grid { display: flex; flex-direction: column; gap: 8px; }
 .spec {
@@ -168,6 +169,7 @@ section { padding: 40px 0; }
 
 @media (max-width: 600px) {
   .hero h1 { font-size: 1.4rem; }
+  section { padding: 40px 0; }
   header { flex-direction: column; gap: 12px; text-align: center; }
   header nav a { margin: 0 8px; }
   .spec { flex-wrap: wrap; gap: 6px; }
@@ -177,11 +179,18 @@ section { padding: 40px 0; }
 </head>
 <body>
 
+<div class="status-bar" style="padding:6px 24px;font-size:0.7rem;color:var(--dim);display:flex;justify-content:space-between;border-bottom:1px solid var(--border);transition:border-color .3s">
+<span>USER: VVAT3R</span>
+<span style="color:var(--green);font-weight:700">CACHYOS</span>
+<span>SHELL: bash</span>
+</div>
+
 <header>
 <h1>Ruknun Shadid Tawsif</h1>
 <nav>
 <a href="../">Home</a>
 <a href="https://github.com/VVAT3R" target="_blank">GitHub</a>
+<a href="#" onclick="toggleTheme();return false" id="themeBtn" style="color:var(--dim)">Light</a>
 <a href="https://mail.google.com/mail/?view=cm&fs=1&to=mrmysteriousx5@gmail.com" target="_blank">Email</a>
 </nav>
 </header>
@@ -281,5 +290,12 @@ section { padding: 40px 0; }
 </div>
 </section>
 
+<script>
+function toggleTheme() {
+  document.body.classList.toggle('light');
+  document.getElementById('themeBtn').textContent =
+    document.body.classList.contains('light') ? 'Dark' : 'Light';
+}
+</script>
 </body>
 </html>
